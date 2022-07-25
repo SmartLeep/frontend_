@@ -1,8 +1,9 @@
 import react from "react";
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import Svg, { Path,Rect, Defs, Pattern, Use, Image } from 'react-native-svg';
+
 import { ImageBackground } from "react-native";
+import { Image } from 'react-native';
 import {Colors  } from 'react-native/Libraries/NewAppScreen';
 
 import { useNavigation } from "@react-navigation/native";
@@ -46,11 +47,11 @@ const LoginScreen= ()=>{
         <ImageBackground style={ styles.backgroundImage } 
                 resizeMode='cover' 
                 source={require('../../image/fondo_smart.png')}></ImageBackground>
-        <Image style={styles.logo}
-                source={require('../../image/logo_smart.png')}></Image>
           
         <View style={styles.modalView}>
-        <SvgTop style={ styles.logo2 }/> 
+        <Image style={styles.image}
+                source={require('../../image/logo_smart.png')}></Image>
+            
             <TextInput style={styles.txtInput} 
                       placeholder="Email"
                       
@@ -58,7 +59,7 @@ const LoginScreen= ()=>{
             <TextInput secureTextEntry={true} style={styles.txtInput} 
                       placeholder="Contraseña"
                       />               
-            <TouchableOpacity
+            <TouchableOpacity onPress={() => navigation.navigate('Cuenta creada')}
                   style={styles.colorBtn}>
             <Text style={styles.colorTxtBtn}>Login</Text>
             </TouchableOpacity>  
@@ -81,11 +82,18 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    image:{
+
+      width: 300, 
+      height: 155, 
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     backgroundImage: {
         width: '100%',
         height: '100%',
         flex: 1,
-        position: 'relative',
+        position: 'absolute',
     
     },
     logo: {
@@ -194,7 +202,9 @@ const styles = StyleSheet.create({
           
           shadowOpacity: 0.25,
          
-          elevation: 5
+          elevation: 5,
+          
+          
         }
   });
 

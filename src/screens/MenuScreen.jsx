@@ -21,7 +21,7 @@ const MenuScreen= ()=>{
 
                 <Text style={ styles.titulo } > Bienvenido</Text>
                 
-                <TouchableOpacity onPress={() => navigation.navigate('Login')}
+                <TouchableOpacity onPress={() => navigation.navigate('Generar Reserva')}
                     style={styles.btnStar}>
                     <Icons  name='business-center' style={styles.circleIcon}/>
                     <Text style={styles.textBtn}>Generar Reserva</Text>

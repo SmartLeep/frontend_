@@ -5,23 +5,23 @@ import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, TextInput,
 import { Colors,} from 'react-native/Libraries/NewAppScreen';
 import { useNavigation } from "@react-navigation/native";
 
-const RegisterScreen= ()=>{
+const PaymentConfirmScreen= ()=>{
   const navigation = useNavigation();
     return(
         <View style={styles.container}>
             
               <View style={styles.modalView}>
-                <Text style={styles.titulo} >Inicia sesión para continuar</Text>
+                <Text style={styles.titulo} >Pago realizado con éxito</Text>
                 
                 
                 <Image style={styles.image}
-                source={require('../../image/icono.png')}></Image>
+                source={require('../../image/check_smart.png')}></Image>
                      
               </View>
               
-              <TouchableOpacity onPress={() => navigation.navigate('Login')}
+              <TouchableOpacity onPress={() => navigation.navigate('Realizar pago')}
                   style={styles.colorBtn}>
-                  <Text style={styles.colorTxtBtn}>Iniciar Sesión</Text>
+                  <Text style={styles.colorTxtBtn}>Ver mis reservas</Text>
                 </TouchableOpacity> 
                 
                  
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
       },
       image:{
         marginTop: 70,
-        width: 100, 
+        width: 150, 
         height: 100, 
         justifyContent: 'center',
         alignItems: 'center',
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     },
     titulo:{
         color:'#000000',
-        fontSize: 30,
+        fontSize: 27,
         marginTop: 20,
         fontWeight: 'bold',
         textAlign: 'center'
@@ -126,4 +126,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
       }
   });
-export default RegisterScreen
+export default PaymentConfirmScreen

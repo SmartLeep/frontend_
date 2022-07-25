@@ -1,24 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import { Formik } from 'formik';
-import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
-    Text,
-    StatusBar,
-    TextInput, 
-    Button,
-    
-    TouchableOpacity
-  } from 'react-native';
-  import {
-    
-    Colors,
-   
-  } from 'react-native/Libraries/NewAppScreen';
-
-  import { useNavigation } from "@react-navigation/native";
+import {SafeAreaView,StyleSheet,ScrollView,View,Text,StatusBar,TextInput, Button,TouchableOpacity} from 'react-native';
+import {Colors,} from 'react-native/Libraries/NewAppScreen';
+import { useNavigation } from "@react-navigation/native";
+import { ImageBackground } from "react-native";
+import { Image } from 'react-native';
 
    const RegisterScreen = props => (
 
@@ -50,12 +36,16 @@ import {
               errors,
               touched,
               isValid, }) => (
-    <View>
+    <View style={styles.container}>
+       <ImageBackground style={ styles.backgroundImage } 
+                resizeMode='cover' 
+                source={require('../../image/fondo_smart.png')}></ImageBackground>
     <View style={styles.modalView}>
-    <Text style={styles.titulo} >Resgistrate</Text>
+    <Image style={styles.image}
+                source={require('../../image/logo_smart.png')}></Image>
 
- 
-    <TextInput style={styles.nombresyapellidos} 
+                
+    <TextInput style={styles.txtInput} 
             onChangeText={handleChange('name')}
             onBlur={handleBlur('name')}
             value={values.name}
@@ -64,7 +54,7 @@ import {
             {(errors.name && touched.name) &&
                     <Text style={styles.errorText}>{errors.name}</Text>
                   }
-  <TextInput style={styles.nombresyapellidos}
+  <TextInput style={styles.txtInput}
             onChangeText={handleChange('lastName')}
             onBlur={handleBlur('lastName')}
             value={values.lastName}
@@ -73,7 +63,7 @@ import {
             {(errors.lastName && touched.lastName) &&
                     <Text style={styles.errorText}>{errors.lastName}</Text>
                   }
-    <TextInput style={styles.email}
+    <TextInput style={styles.txtInput}
             onChangeText={handleChange('identificacion')}
             onBlur={handleBlur('identificacion')}
             value={values.identificacion}
@@ -83,7 +73,7 @@ import {
              {(errors.identificacion && touched.identificacion) &&
                     <Text style={styles.errorText}>{errors.identificacion}</Text>
                   } 
-       <TextInput style={styles.email}
+       <TextInput style={styles.txtInput}
             onChangeText={handleChange('direccion')}
             onBlur={handleBlur('direccion')}
             value={values.direccion}
@@ -92,7 +82,7 @@ import {
              {(errors.direccion && touched.direccion) &&
                     <Text style={styles.errorText}>{errors.direccion}</Text>
                   } 
-   <TextInput style={styles.email} 
+   <TextInput style={styles.txtInput} 
             placeholder="Email"
             onChangeText={handleChange('email')}
             onBlur={handleBlur('email')}
@@ -101,7 +91,7 @@ import {
              {(errors.email && touched.email) &&
                     <Text style={styles.errorText}>{errors.email}</Text>
                   }
-    <TextInput secureTextEntry={true} style={styles.email}
+    <TextInput secureTextEntry={true} style={styles.txtInput}
              onChangeText={handleChange('password')}
              onBlur={handleBlur('password')}
              value={values.password} 
@@ -110,59 +100,64 @@ import {
              {(errors.password && touched.password) &&
                     <Text style={styles.errorText}>{errors.password}</Text>
                   }      
-    </View>
-    <TouchableOpacity
+                  <TouchableOpacity
         style={styles.colorBtn}
         onPress={handleSubmit}>
         <Text style={styles.colorTxtBtn}>Registrar Cuenta</Text>
-      </TouchableOpacity>  
+      </TouchableOpacity> 
+    </View>
+     
 </View>
       )}
     </Formik>
   );
-/*const RegisterScreen= ()=>{
-    return(
-        <View>
-              <View style={styles.modalView}>
-              <Text style={styles.titulo} >Resgistrate</Text>
 
-           
-              <TextInput style={styles.nombresyapellidos} 
-                      placeholder="Nombres"
-                      keyboardType="default" /> 
-            <TextInput style={styles.nombresyapellidos} 
-                      placeholder="Apellidos"
-                      keyboardType="default" /> 
-             <TextInput style={styles.email} 
-                      placeholder="Email"
-                     
-                      keyboardType="email-address"/> 
-              <TextInput secureTextEntry={true} style={styles.email} 
-                      placeholder="Contraseña"
-                      />      
-                <TextInput style={styles.email} 
-                      placeholder="Dirección"
-                      />    
-           
-            
-
-                     
-              </View>
-              <TouchableOpacity
-                  style={styles.colorBtn}>
-                  <Text style={styles.colorTxtBtn}>Registrar Cuenta</Text>
-                </TouchableOpacity>  
-        </View>
-    );
-}*/
 const styles = StyleSheet.create({
-  
-    titulo:{
-        color:'#FF9116',
-        fontSize: 16,
-        marginTop: 20,
-      
-    },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+      justifyContent: 'center',
+  },
+  image:{
+
+    width: 300, 
+    height: 155, 
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop:-10,
+    marginBottom:5,
+  },
+  titulo:{
+    marginTop:5,
+    textAlign: 'center',
+      color:'#FF9116',
+      fontSize: 25,
+      marginTop: 0.1,
+      marginBottom:10,
+      fontWeight: 'bold'
+    
+  },
+  backgroundImage: {
+    width: '100%',
+    height: '100%',
+    flex: 1,
+    position: 'relative',
+
+  },
+  txtInput: {
+    color: '#000000',
+    fontSize: 14,
+    marginTop: 10,
+    fontWeight: '600',
+    paddingLeft: 20,
+    borderBottomColor: '#000000',
+    borderBottomWidth: 0.5,
+    paddingRight: 12,
+    borderRadius: 30,
+    backgroundColor: '#F9F9F9',
+
+    height: 50,
+  }, 
    
     nombresyapellidos: {
         color: '#000000',
@@ -207,22 +202,22 @@ const styles = StyleSheet.create({
     },
    
     errorText: {
-      fontSize: 14,
+      fontSize: 10,
       color: 'red',
-      marginBottom: 20,
-      marginLeft: 20
+
     },
     modalView: {
+      
         margin: 20,
         backgroundColor: "white",
         borderRadius: 35,
         padding: 35,
-       
+        position: 'absolute', 
         shadowColor: "#000",
         
         shadowOpacity: 0.25,
        
         elevation: 5
-      }
+      },
   });
 export default RegisterScreen

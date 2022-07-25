@@ -5,13 +5,13 @@ import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, TextInput,
 import { Colors,} from 'react-native/Libraries/NewAppScreen';
 import { useNavigation } from "@react-navigation/native";
 
-const RegisterScreen= ()=>{
+const AccountCreateScren= ()=>{
   const navigation = useNavigation();
     return(
         <View style={styles.container}>
             
               <View style={styles.modalView}>
-                <Text style={styles.titulo} >Inicia sesión para continuar</Text>
+                <Text style={styles.titulo} >Su cuenta a sido creada con éxito</Text>
                 
                 
                 <Image style={styles.image}
@@ -19,9 +19,9 @@ const RegisterScreen= ()=>{
                      
               </View>
               
-              <TouchableOpacity onPress={() => navigation.navigate('Login')}
+              <TouchableOpacity onPress={() => navigation.navigate('Confirmar reserva')}
                   style={styles.colorBtn}>
-                  <Text style={styles.colorTxtBtn}>Iniciar Sesión</Text>
+                  <Text style={styles.colorTxtBtn}>Aceptar</Text>
                 </TouchableOpacity> 
                 
                  
@@ -126,4 +126,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
       }
   });
-export default RegisterScreen
+export default AccountCreateScren

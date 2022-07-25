@@ -14,7 +14,7 @@ const LoginScreen= ()=>{
             
             <ImageBackground style={ styles.backgroundImage } 
                 resizeMode='cover' 
-                source={require('../../image/principal_smart.jpg')}></ImageBackground>
+                source={require('../../image/home.jpg')}></ImageBackground>
             <Text style={ styles.titulo }> BIENVENIDO</Text>
             <TouchableOpacity onPress={() => navigation.navigate('Menu')}
                   style={styles.colorBtn}>

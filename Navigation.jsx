@@ -11,6 +11,12 @@ import MenuScreen from "./src/screens/MenuScreen";
 import ReservaScreen from "./src/screens/ReservaScreen";
 import RegisterScreen from "./src/screens/RegisterScreen";
 import CreateAccountScreen from "./src/screens/CreateAccountScreen";
+import GenerateReservaScreen from "./src/screens/GenerateReservaScreen";
+import RoomsAvailableScreen from "./src/screens/RoomsAvailableScreen";
+import AccountCreateScreen from "./src/screens/AccountCreateScreen";
+import ConfirmReserScreen from "./src/screens/ConfirmReserScreen";
+import PaymentScreen from "./src/screens/PaymentScreen";
+import PaymentConfirmScreen from "./src/screens/PaymentConfirmScreen";
 
 
 
@@ -33,6 +39,12 @@ function App() {
         <Stack.Screen name="Reserva" component={ReservaScreen} />
         <Stack.Screen name="Registro" component={RegisterScreen} />
         <Stack.Screen name="Crearcuenta" component={CreateAccountScreen} />
+        <Stack.Screen name="Generar Reserva" component={GenerateReservaScreen} />
+        <Stack.Screen name="Habitaciones disponibles" component={RoomsAvailableScreen} />
+        <Stack.Screen name="Cuenta creada" component={AccountCreateScreen} />
+        <Stack.Screen name="Confirmar reserva" component={ConfirmReserScreen} />
+        <Stack.Screen name="Realizar pago" component={PaymentScreen} />
+        <Stack.Screen name="Confirmación de pago" component={PaymentConfirmScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
