@@ -15,7 +15,7 @@ const AccountCreateScren= ()=>{
                 
                 
                 <Image style={styles.image}
-                source={require('../../image/icono.png')}></Image>
+                source={require('../../image/perfilico.png')}></Image>
                      
               </View>
               

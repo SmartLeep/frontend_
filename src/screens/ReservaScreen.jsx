@@ -22,7 +22,7 @@ const RegisterScreen= ({route})=>{
                 
                 
                 <Image style={styles.image}
-                source={require('../../image/icono.png')}></Image>
+                source={require('../../image/perfilico.png')}></Image>
                      
               </View>
               
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
       },
       
       image:{
-        marginTop: 70,
+        marginTop: 60,
         width: 100, 
         height: 100, 
         justifyContent: 'center',
