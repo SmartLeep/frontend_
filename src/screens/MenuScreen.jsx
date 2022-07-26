@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useContext } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import Svg, { Path,Rect, Defs, Pattern, Use, Image } from 'react-native-svg';
@@ -7,9 +7,11 @@ import {Colors  } from 'react-native/Libraries/NewAppScreen';
 
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from "@react-navigation/native";
+import { AuthContext } from "../../context/AuthContext";
 
 const MenuScreen= ()=>{
     const navigation = useNavigation();
+    const {userInfo, logout, isLoading } = useContext(AuthContext);
     return(
         <View style={styles.container}>
             
@@ -28,7 +30,7 @@ const MenuScreen= ()=>{
                     <Icons  name='arrow-forward-ios' style={styles.flechaIcon} />
                 </TouchableOpacity>  
                 
-                <TouchableOpacity onPress={() => navigation.navigate('Reserva')}
+                <TouchableOpacity onPress={() => navigation.navigate('Login')}
                     style={styles.btnStar}>
                     <Icons  name='person' style={styles.circleIcon}/>
                     <Text style={styles.textBtn}>Mis Reservas</Text>

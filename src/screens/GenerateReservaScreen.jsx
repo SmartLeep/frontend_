@@ -10,6 +10,8 @@ const SeleccionFechas = () => {
   //combo
   const [chooseData, setchoosedata] = useState("Seleccione item....");
     const [isModalVisible, setisModalVisible] = useState(false);
+    const [textFechaIn, setTextIn] = useState(new Date);
+    const [textFechaFin, setTextFin] = useState(new Date);
     const changeModalVisibility = (bool) =>{
         setisModalVisible(bool)
     }
@@ -22,6 +24,7 @@ const SeleccionFechas = () => {
   //Seleccionar Fecha
   //const navigation = useNavigation();
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [isDatePickerVisible2, setDatePickerVisibility2] = useState(false);
   
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -32,16 +35,38 @@ const SeleccionFechas = () => {
   };
 
   const handleConfirm = (date) => {
-    console.warn("Hora Seleccionada: ", date);
+    //console.warn(date);
+    setTextIn(date);
     hideDatePicker();
   };
+
+  //Fecha 2
+  const showDatePicker2 = () => {
+    setDatePickerVisibility2(true);
+  };
+
+  const hideDatePicker2 = () => {
+    setDatePickerVisibility2(false);
+  };
+
+  const handleConfirm2 = (date) => {
+    //console.warn("Fecha 2");
+    setTextFin(date);
+    //console.warn(textFechaFin);
+    hideDatePicker2();
+  };
+  const valor1 = textFechaIn.toLocaleDateString();
+  const valor2 = textFechaFin.toLocaleDateString();
+  var diff = textFechaFin - textFechaIn;
+  const calcular = diff/(1000*60*60*24)
+  //console.log(valor)
   return (
         <View style={styles.container}>
           
           <View style={styles.modalView}>
           
           <Text style={styles.titulo} >Seleccione la fecha de su reservación:</Text>
-
+          <Text>{valor1}</Text>
             <TouchableOpacity style={styles.btnStar} title="Fecha Ingreso" onPress={showDatePicker}>
               <Icons  name='date-range' style={styles.circleIcon}/>
               <Text tyle={styles.textBtn}>Fecha Ingreso</Text>
@@ -53,16 +78,16 @@ const SeleccionFechas = () => {
               onCancel={hideDatePicker}
             />
             
-            
-            <TouchableOpacity style={styles.btnStar} title="Fecha Salida" onPress={showDatePicker}>
+            <Text>{valor2}</Text>
+            <TouchableOpacity style={styles.btnStar} title="Fecha salida" onPress={showDatePicker2}>
               <Icons  name='date-range' style={styles.circleIcon}/>
               <Text tyle={styles.textBtn}>Fecha Salida</Text>
             </TouchableOpacity> 
             <DateTimePickerModal
-              isVisible={isDatePickerVisible}
+              isVisible={isDatePickerVisible2}
               mode="date"
-              onConfirm={handleConfirm}
-              onCancel={hideDatePicker}
+              onConfirm={handleConfirm2}
+              onCancel={hideDatePicker2}
             />
           
           <Text style={styles.titulo}>Seleccione el numero de personas:</Text>
@@ -87,7 +112,9 @@ const SeleccionFechas = () => {
             />
             </Modal>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate('Habitaciones disponibles')}
+          <TouchableOpacity 
+            onPress={() => navigation.navigate('Habitaciones disponibles',{capacity:chooseData,
+            inicio:textFechaIn.toISOString(), final:textFechaFin.toISOString(), Dias:calcular})}
             style={styles.colorBtn}>
             <Text style={styles.colorTxtBtn}>Continuar</Text>
           </TouchableOpacity>  

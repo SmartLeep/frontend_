@@ -1,15 +1,19 @@
-import react from "react";
+import react, { useState } from "react";
 import { Image } from 'react-native';
 
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, TextInput,  Button, TouchableOpacity} from 'react-native';
 import { Colors,} from 'react-native/Libraries/NewAppScreen';
 import { useNavigation } from "@react-navigation/native";
 
-const RegisterScreen= ()=>{
+const RegisterScreen= ({route})=>{
+  const {DiasEstancia} = route.params;
+  const {precio} = route.params;
   const navigation = useNavigation();
+  //setPrecioValor(precio*DiasEstancia)
+  const valorFinal = precio*DiasEstancia;
     return(
         <View style={styles.container}>
-            
+            <Text>hola:{valorFinal}</Text>
               <View style={styles.modalView}>
                 <Text style={styles.titulo} >Inicia sesión para continuar</Text>
                 
@@ -19,7 +23,7 @@ const RegisterScreen= ()=>{
                      
               </View>
               
-              <TouchableOpacity onPress={() => navigation.navigate('Login')}
+              <TouchableOpacity onPress={() => navigation.navigate('Login',{PrecioValor:valorFinal})}
                   style={styles.colorBtn}>
                   <Text style={styles.colorTxtBtn}>Iniciar Sesión</Text>
                 </TouchableOpacity> 

@@ -10,16 +10,21 @@ import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../../context/AuthContext";
 import Spinner from 'react-native-loading-spinner-overlay';
 
-const LoginScreen= ()=>{
+const RegisScreen= ()=>{
     const navigation = useNavigation();
 
-    const [username, setUsername] = useState(null);
-    const [password, setPassword] = useState(null);
-    const {isLoading, login} = useContext(AuthContext);
+    const [Identificacion, setIdentificacion] = useState(null);
+    const [Nombres, setNombres] = useState(null);
+    const [Apellidos, setApellidos] = useState(null);
+    const [Direccion, setDireccion] = useState(null);
+    const [Email, setEmail] = useState(null);
+    const [username, setusername] = useState(null);
+    const [password, setpassword] = useState(null);
+    const {isLoading, register} = useContext(AuthContext);
 
     return(
     <View style={styles.container}>
-        <Spinner /> 
+        <Spinner visible={isLoading} /> 
         <ImageBackground style={ styles.backgroundImage } 
                 resizeMode='cover' 
                 source={require('../../image/fondo_smart.png')}></ImageBackground>
@@ -30,23 +35,46 @@ const LoginScreen= ()=>{
                 source={require('../../image/logo_smart.png')}></Image>
             
             <TextInput style={styles.txtInput} 
+                      value={Nombres}
+                      placeholder="Nombres"
+                      onChangeText={text => setNombres(text)}
+                      />
+            <TextInput style={styles.txtInput} 
+                      value={Apellidos}
+                      placeholder="Apellidos"
+                      onChangeText={text => setApellidos(text)}
+                      /> 
+            <TextInput style={styles.txtInput} 
+                      value={Identificacion}
+                      placeholder="Identificacion"
+                      keyboardType='number-pad'
+                      onChangeText={text => setIdentificacion(text)}
+                      />
+            <TextInput style={styles.txtInput} 
+                      value={Direccion}
+                      placeholder="Direccion"
+                      onChangeText={text => setDireccion(text)}
+                      />
+            <TextInput style={styles.txtInput} 
+                      value={Email}
+                      placeholder="Email"
+                      onChangeText={text => setEmail(text)}
+                      />
+            <TextInput style={styles.txtInput} 
                       value={username}
                       placeholder="Usuario"
-                      onChangeText={text => setUsername(text)}
-                      /> 
+                      onChangeText={text => setusername(text)}
+                      />
             <TextInput secureTextEntry={true} style={styles.txtInput} 
                       value={password}
                       placeholder="Contraseña"
-                      onChangeText={text => setPassword(text)}
+                      onChangeText={text => setpassword(text)}
                       />               
-            <TouchableOpacity onPress={() =>{login(username, password)}}//navigation.navigate('Cuenta creada')}
+            <TouchableOpacity onPress={() =>{register(Identificacion, Nombres, Apellidos, Direccion, Email, username, password)}}//navigation.navigate('Cuenta creada')}
                   style={styles.colorBtn}>
-            <Text style={styles.colorTxtBtn}>Login</Text>
+            <Text style={styles.colorTxtBtn}>Registrar Cuenta</Text>
             </TouchableOpacity>  
-            <TouchableOpacity onPress={() => navigation.navigate('Registro')}
-                  style={styles.colorBtnRegistros}>
-                  <Text style={styles.colorTxtBtnRegistro}>Registrarse</Text>
-            </TouchableOpacity>
+
             
         </View>
               
@@ -64,11 +92,13 @@ const styles = StyleSheet.create({
     },
     image:{
 
-      width: 300, 
-      height: 155, 
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
+        width: 300, 
+        height: 155, 
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop:-10,
+        marginBottom:5,
+      },
     backgroundImage: {
         width: '100%',
         height: '100%',
@@ -120,8 +150,8 @@ const styles = StyleSheet.create({
      
       txtInput: {
         color: '#000000',
-        fontSize: 16,
-        marginTop: 40,
+        fontSize: 14,
+        marginTop: 10,
         fontWeight: '600',
         paddingLeft: 20,
         borderBottomColor: '#000000',
@@ -129,7 +159,7 @@ const styles = StyleSheet.create({
         paddingRight: 12,
         borderRadius: 30,
         backgroundColor: '#F9F9F9',
-
+    
         height: 50,
       }, 
      
@@ -189,4 +219,4 @@ const styles = StyleSheet.create({
   });
 
 
-export default LoginScreen
+export default RegisScreen

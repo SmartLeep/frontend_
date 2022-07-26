@@ -2,18 +2,23 @@ import React, { useState,Component } from 'react';
 import { View, ImageBackground,TouchableOpacity, StyleSheet, Text, Button, SafeAreaView, ScrollView, Image, ActivityIndicator} from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
-const image = { uri: "https://fondosmil.com/fondo/17538.jpg"};
-
-const Habitaciones = () => {
+const Habitaciones = ({route}) => {
+  const {capacity} = route.params;
+  const {inicio} = route.params;
+  const {final} = route.params;
+  const {Dias} = route.params;
   const navigation = useNavigation();
   const [habit, sethabitaciones] = React.useState([]);
   React.useEffect(()=>{
     obtenerHabit()
-    console.log("hola")
+    //console.log("hola")
   },[])
 
   function obtenerHabit(){
-    const response =  fetch("http://35.185.207.90:8080/api/v1/habitacion", {
+    const DATOS = "http://34.83.56.19:8080/api/v1/reserva/habitacion/filter?capacity="+capacity+"&check-in="+inicio+"&check-out="+final
+;
+    //console.log(DATOS);
+    const response =  fetch(DATOS, {
       method: 'GET',
       headers: {
         accept: 'application/json'}
@@ -48,7 +53,7 @@ const Habitaciones = () => {
               <Text style={styles.Descripcion}>{item.description}
               </Text>
 
-                <TouchableOpacity onPress={() => navigation.navigate('Reserva')}
+                <TouchableOpacity onPress={() => navigation.navigate('Reserva',{precio:item.price, DiasEstancia:Dias})}
                 style={styles.colorBtn}>
                 <Text style={styles.colorTxtBtn}>Seleccionar</Text>
                 </TouchableOpacity> 

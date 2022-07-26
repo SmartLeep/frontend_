@@ -1,6 +1,6 @@
 import react from "react";
 import { Image } from 'react-native';
-
+import { useNavigation } from "@react-navigation/native";
 import {
     SafeAreaView,
     StyleSheet,
@@ -20,6 +20,7 @@ import {
   } from 'react-native/Libraries/NewAppScreen';
  
 const RegisterScreen= ()=>{
+  const navigation = useNavigation();
     return(
         <View style={styles.container}>
             
@@ -31,9 +32,9 @@ const RegisterScreen= ()=>{
 
                      
               </View>
-              <TouchableOpacity
+              <TouchableOpacity onPress={() => navigation.navigate('Confirmar reserva')}
                   style={styles.colorBtn}>
-                  <Text style={styles.colorTxtBtn}>Iniciar Sesión</Text>
+                  <Text style={styles.colorTxtBtn}>Continuar</Text>
                 </TouchableOpacity>  
         </View>
     );
