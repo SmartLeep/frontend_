@@ -30,6 +30,17 @@ const SeleccionFechas = () => {
     setDatePickerVisibility(true);
   };
 
+  function validarCampo() {
+    if (chooseData!="Seleccione item...."){
+      navigation.navigate('Habitaciones disponibles',
+      {
+        capacity:chooseData,
+        inicio:textFechaIn.toISOString(),
+        final:textFechaFin.toISOString(),
+        Dias:calcular})
+    }
+  };
+
   const hideDatePicker = () => {
     setDatePickerVisibility(false);
   };
@@ -62,11 +73,13 @@ const SeleccionFechas = () => {
   //console.log(valor)
   return (
         <View style={styles.container}>
-          
+          <ImageBackground style={ styles.backgroundImage } 
+                resizeMode='cover' 
+                source={require('../../image/fondo_smart.png')}></ImageBackground>
           <View style={styles.modalView}>
           
           <Text style={styles.titulo} >Seleccione la fecha de su reservación:</Text>
-          <Text>{valor1}</Text>
+          <Text style={styles.subtitulo}>{valor1}</Text>
             <TouchableOpacity style={styles.btnStar} title="Fecha Ingreso" onPress={showDatePicker}>
               <Icons  name='date-range' style={styles.circleIcon}/>
               <Text tyle={styles.textBtn}>Fecha Ingreso</Text>
@@ -78,7 +91,7 @@ const SeleccionFechas = () => {
               onCancel={hideDatePicker}
             />
             
-            <Text>{valor2}</Text>
+            <Text style={styles.subtitulo}>{valor2}</Text>
             <TouchableOpacity style={styles.btnStar} title="Fecha salida" onPress={showDatePicker2}>
               <Icons  name='date-range' style={styles.circleIcon}/>
               <Text tyle={styles.textBtn}>Fecha Salida</Text>
@@ -112,10 +125,9 @@ const SeleccionFechas = () => {
             />
             </Modal>
           </View>
-          <TouchableOpacity 
-            onPress={() => navigation.navigate('Habitaciones disponibles',{capacity:chooseData,
-            inicio:textFechaIn.toISOString(), final:textFechaFin.toISOString(), Dias:calcular})}
-            style={styles.colorBtn}>
+          <TouchableOpacity  onPress={() => validarCampo()} 
+          style={styles.colorBtn}           
+            >
             <Text style={styles.colorTxtBtn}>Continuar</Text>
           </TouchableOpacity>  
         </View>
@@ -129,6 +141,13 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
   },
+  backgroundImage: {
+    width: '100%',
+    height: '100%',
+    flex: 1,
+    position: 'absolute',
+
+},
   modalView: {
     margin: 20,
     backgroundColor: "white",
@@ -149,6 +168,16 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     padding:10
   
+},
+subtitulo:{
+  color:'#35CAC8',
+  fontSize: 15,
+  marginTop: 0,
+  fontStyle: "italic",
+  fontWeight: 'bold',
+  textAlign: 'center',
+  padding:10
+
 },
 textBtn:{
   textAlign: 'center',

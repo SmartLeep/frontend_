@@ -47,9 +47,9 @@ const Habitaciones = ({route}) => {
                 }}
               />
               <Text style={styles.titulo}>{item.name}</Text>
-              <Text style={styles.titulo}>Costo</Text>
+              <Text style={styles.subtitulo}>Costo</Text>
               <Text style={styles.Descripcion}>{item.price}</Text>
-              <Text style={styles.titulo}>Descripción </Text>
+              <Text style={styles.subtitulo}>Descripción </Text>
               <Text style={styles.Descripcion}>{item.description}
               </Text>
 
@@ -102,7 +102,8 @@ colorTxtBtn: {
     fontSize:15,
     marginRight: 150,
     marginLeft:10,
-    padding:1
+    padding:1,
+    fontStyle: "italic",
  },
   header: {
     fontSize: 20,
@@ -122,6 +123,15 @@ colorTxtBtn: {
   },
   titulo: {
     color: "#ff9116",
+    fontSize: 15,
+    fontWeight: "bold",
+    backgroundColor: "#ffffff00",
+    marginRight: 150,
+    marginLeft:10,
+    padding:1
+  },
+  subtitulo: {
+    color: "#000000",
     fontSize: 15,
     fontWeight: "bold",
     backgroundColor: "#ffffff00",

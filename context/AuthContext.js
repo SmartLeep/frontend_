@@ -61,7 +61,7 @@ export const AuthProvider = ({children}) => {
                 console.log("mi token", token);
                 useCounter();
                 //navigation.navigate('Cuenta creada');Cuenta creada
-                RootNavigation.navigate('Crearcuenta');
+                RootNavigation.navigate('Confirmar reserva');
             }
             setIsLoading(false);
 

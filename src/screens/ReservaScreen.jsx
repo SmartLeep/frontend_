@@ -1,7 +1,7 @@
 import react, { useState } from "react";
 import { Image } from 'react-native';
 
-import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, TextInput,  Button, TouchableOpacity} from 'react-native';
+import { ImageBackground,SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, TextInput,  Button, TouchableOpacity} from 'react-native';
 import { Colors,} from 'react-native/Libraries/NewAppScreen';
 import { useNavigation } from "@react-navigation/native";
 
@@ -13,6 +13,9 @@ const RegisterScreen= ({route})=>{
   const valorFinal = precio*DiasEstancia;
     return(
         <View style={styles.container}>
+          <ImageBackground style={ styles.backgroundImage } 
+                resizeMode='cover' 
+                source={require('../../image/fondo_smart.png')}></ImageBackground>
             <Text>hola:{valorFinal}</Text>
               <View style={styles.modalView}>
                 <Text style={styles.titulo} >Inicia sesión para continuar</Text>
@@ -39,6 +42,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
       },
+      
       image:{
         marginTop: 70,
         width: 100, 
