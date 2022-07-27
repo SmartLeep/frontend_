@@ -6,11 +6,11 @@ import { Colors,} from 'react-native/Libraries/NewAppScreen';
 import { useNavigation } from "@react-navigation/native";
 
 const ConfirmReserScreen= ({route})=>{
-  const {PrecioValor} = route.params;
-  const {FechaInRes} = route.params;
-  const {FechaFinRes} = route.params;
-  const {IdentifiHabit} = route.params;
-  const {PersonasNum} = route.params;
+  const {PrecioFin} = route.params;
+  const {FechaInicio} = route.params;
+  const {FechaFinal} = route.params;
+  const {Id_Habitaciones} = route.params;
+  const {NUMPerson} = route.params;
   const valor = ""; 
   const navigation = useNavigation();
     return(
@@ -18,11 +18,11 @@ const ConfirmReserScreen= ({route})=>{
             
               <View style={styles.modalView}>
                 <Text style={styles.titulo} >Confirma la reserva para realizar el pago</Text>
-                <Text>Precio ha pagar</Text>
-                <Text>{PrecioValor}</Text>
-                <Text>Su reserva Inicia: {FechaInRes}</Text>
-                <Text>Su reserva Finaliza: {FechaFinRes}</Text>
-                <Text>Total de Personas: {PersonasNum}</Text>
+                <Text>Precio ha pagar:</Text>
+                <Text>{PrecioFin}</Text>
+                <Text>Su reserva Inicia: {FechaInicio}</Text>
+                <Text>Su reserva Finaliza: {FechaFinal}</Text>
+                <Text>Total de Personas a ingresar: {NUMPerson}</Text>
 
 
                 
