@@ -19,7 +19,7 @@ const PaymentConfirmScreen= ()=>{
                      
               </View>
               
-              <TouchableOpacity onPress={() => navigation.navigate('Realizar pago')}
+              <TouchableOpacity 
                   style={styles.colorBtn}>
                   <Text style={styles.colorTxtBtn}>Ver mis reservas</Text>
                 </TouchableOpacity> 

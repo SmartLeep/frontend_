@@ -18,11 +18,11 @@ const ConfirmReserScreen= ({route})=>{
             
               <View style={styles.modalView}>
                 <Text style={styles.titulo} >Confirma la reserva para realizar el pago</Text>
-                <Text>Precio ha pagar:</Text>
-                <Text>{PrecioFin}</Text>
-                <Text>Su reserva Inicia: {FechaInicio}</Text>
-                <Text>Su reserva Finaliza: {FechaFinal}</Text>
-                <Text>Total de Personas a ingresar: {NUMPerson}</Text>
+                
+                <Text style={styles.subtitulo}>Precio a pagar: </Text><Text style={styles.subtitulo2}>{PrecioFin}</Text>
+                <Text style={styles.subtitulo}>Su reserva inicia: </Text><Text style={styles.subtitulo2}>{FechaInicio}</Text>
+                <Text style={styles.subtitulo}>Su reserva finaliza: </Text><Text style={styles.subtitulo2}>{FechaFinal}</Text>
+                <Text style={styles.subtitulo}>Total de personas a ingresar: </Text><Text style={styles.subtitulo2}>{NUMPerson}</Text>
 
 
                 
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
       },
       image:{
-        marginTop: 70,
+        marginTop: 40,
         width: 150, 
         height: 100, 
         justifyContent: 'center',
@@ -67,16 +67,23 @@ const styles = StyleSheet.create({
     },
     titulo:{
         color:'#000000',
-        fontSize: 27,
+        fontSize: 25,
         marginTop: 20,
         fontWeight: 'bold',
         textAlign: 'center'
       
     },
-   
+    subtitulo:{
+      color:'#000000',
+      fontSize: 15,
+      marginTop: 10,
+      fontWeight: 'bold',
+      textAlign: "justify"
+    
+  },
     nombresyapellidos: {
         color: '#000000',
-      fontSize: 16,
+      fontSize: 14,
       marginTop: 40,
     
       fontWeight: '600',
