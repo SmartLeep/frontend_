@@ -7,13 +7,22 @@ import { useNavigation } from "@react-navigation/native";
 
 const RegisterScreen= ({route})=>{
   const {DiasEstancia} = route.params;
-  const {precio} = route.params;
+  const {PrecioInicial} = route.params;
+  const {FechaInicio} = route.params;
+  const {FechaSalida} = route.params;
+  const {idHabitacion} = route.params;
+  const {NumPerson} = route.params;
   const navigation = useNavigation();
-  //setPrecioValor(precio*DiasEstancia)
-  const valorFinal = precio*DiasEstancia;
+  
+  var valorFinal = 1;
+  if(DiasEstancia == 0){
+    valorFinal= PrecioInicial*(DiasEstancia+1);
+  }else{
+     valorFinal= PrecioInicial*DiasEstancia;
+  }
     return(
         <View style={styles.container}>
-            <Text>hola:{valorFinal}</Text>
+          <Text>Costo: {valorFinal}</Text>
               <View style={styles.modalView}>
                 <Text style={styles.titulo} >Inicia sesión para continuar</Text>
                 
@@ -23,7 +32,7 @@ const RegisterScreen= ({route})=>{
                      
               </View>
               
-              <TouchableOpacity onPress={() => navigation.navigate('Login',{PrecioValor:valorFinal})}
+              <TouchableOpacity onPress={() => navigation.navigate('Login',{PrecioValor:valorFinal, Fechain:FechaInicio, Fechafin:FechaSalida, HabitacionId:idHabitacion, Personas:NumPerson})}
                   style={styles.colorBtn}>
                   <Text style={styles.colorTxtBtn}>Iniciar Sesión</Text>
                 </TouchableOpacity> 

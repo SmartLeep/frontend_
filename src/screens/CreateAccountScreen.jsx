@@ -19,7 +19,12 @@ import {
    
   } from 'react-native/Libraries/NewAppScreen';
  
-const RegisterScreen= ()=>{
+const RegisterScreen= ({route})=>{
+  const {PrecioFin} = route.params;
+  const {FechaInicio} = route.params;
+  const {FechaFinal} = route.params;
+  const {Id_Habitaciones} = route.params;
+  const {NUMPerson} = route.params;
   const navigation = useNavigation();
     return(
         <View style={styles.container}>
@@ -32,7 +37,7 @@ const RegisterScreen= ()=>{
 
                      
               </View>
-              <TouchableOpacity onPress={() => navigation.navigate('Confirmar reserva')}
+              <TouchableOpacity onPress={() => navigation.navigate('Confirmar reserva',{PrecioValor:PrecioFin, FechaInRes:FechaInicio, FechaFinRes:FechaFinal, IdentifiHabit:Id_Habitaciones, PersonasNum:NUMPerson})}
                   style={styles.colorBtn}>
                   <Text style={styles.colorTxtBtn}>Continuar</Text>
                 </TouchableOpacity>  

@@ -4,9 +4,9 @@ import { createNavigationContainerRef } from '@react-navigation/native';
 
 export const navigationRef = createNavigationContainerRef()
 
-export function navigate(name) {
+export function navigate(name, PrecioValor, Fechain,Fechafin,HabitacionId,Personas) {
   if (navigationRef.isReady()) {
-    navigationRef.navigate(name);
+    navigationRef.navigate(name,{PrecioFin:PrecioValor, FechaInicio:Fechain, FechaFinal:Fechafin, Id_Habitaciones:HabitacionId, NUMPerson:Personas});
   }
 }
 

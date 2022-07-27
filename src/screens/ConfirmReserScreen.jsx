@@ -5,13 +5,26 @@ import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, TextInput,
 import { Colors,} from 'react-native/Libraries/NewAppScreen';
 import { useNavigation } from "@react-navigation/native";
 
-const ConfirmReserScreen= ()=>{
+const ConfirmReserScreen= ({route})=>{
+  const {PrecioValor} = route.params;
+  const {FechaInRes} = route.params;
+  const {FechaFinRes} = route.params;
+  const {IdentifiHabit} = route.params;
+  const {PersonasNum} = route.params;
+  const valor = ""; 
   const navigation = useNavigation();
     return(
         <View style={styles.container}>
             
               <View style={styles.modalView}>
                 <Text style={styles.titulo} >Confirma la reserva para realizar el pago</Text>
+                <Text>Precio ha pagar</Text>
+                <Text>{PrecioValor}</Text>
+                <Text>Su reserva Inicia: {FechaInRes}</Text>
+                <Text>Su reserva Finaliza: {FechaFinRes}</Text>
+                <Text>Total de Personas: {PersonasNum}</Text>
+
+
                 
                 
                 <Image style={styles.image}

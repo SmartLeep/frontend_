@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import React, {createContext, useEffect, useState} from 'react';
 import { BASE_URL } from '../src/config';
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native"; 
 
 import { Navigation } from "../Navigation";
 import * as RootNavigation from '../RootNavigation.js';
@@ -47,7 +47,7 @@ export const AuthProvider = ({children}) => {
     };
 
     // Login
-    const login = (username, password) =>{
+    const login = (username, password,PrecioValor, Fechain,Fechafin,HabitacionId,Personas) =>{
         setIsLoading(true);
         axios.post(`${BASE_URL}/v1/auth/signin`,{
             username,
@@ -59,9 +59,11 @@ export const AuthProvider = ({children}) => {
             const token = AsyncStorage.setItem('userInfo', JSON.stringify(userInfo))
             if (token!=null){
                 console.log("mi token", token);
+                console.log(PrecioValor);
                 useCounter();
                 //navigation.navigate('Cuenta creada');Cuenta creada
-                RootNavigation.navigate('Crearcuenta');
+
+                RootNavigation.navigate('Crearcuenta',PrecioValor, Fechain,Fechafin,HabitacionId,Personas);
             }
             setIsLoading(false);
 

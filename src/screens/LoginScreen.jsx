@@ -10,7 +10,14 @@ import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../../context/AuthContext";
 import Spinner from 'react-native-loading-spinner-overlay';
 
-const LoginScreen= ()=>{
+const LoginScreen= ({route})=>{
+    const {PrecioValor} = route.params;
+    const {Fechain} = route.params;
+    const {Fechafin} = route.params;
+    const {HabitacionId} = route.params;
+    const {Personas} = route.params;
+
+
     const navigation = useNavigation();
 
     const [username, setUsername] = useState(null);
@@ -39,7 +46,7 @@ const LoginScreen= ()=>{
                       placeholder="Contraseña"
                       onChangeText={text => setPassword(text)}
                       />               
-            <TouchableOpacity onPress={() =>{login(username, password)}}//navigation.navigate('Cuenta creada')}
+            <TouchableOpacity onPress={() =>{login(username, password, PrecioValor, Fechain,Fechafin,HabitacionId,Personas)}}//navigation.navigate('Cuenta creada')}
                   style={styles.colorBtn}>
             <Text style={styles.colorTxtBtn}>Login</Text>
             </TouchableOpacity>  

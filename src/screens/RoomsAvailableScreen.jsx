@@ -39,11 +39,11 @@ const Habitaciones = ({route}) => {
         <ScrollView style={styles.scrollView}>
         <View style={styles.container}>
           {habit.map(item=>(
-            <View style={styles.Cuadro}>
+            <View style={styles.Cuadro} key={item._id}>
               <Image
                 style={styles.tinyLogo}
                 source={{
-                  uri: 'https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg',
+                  uri: item.urlPhoto,
                 }}
               />
               <Text style={styles.titulo}>{item.name}</Text>
@@ -53,7 +53,7 @@ const Habitaciones = ({route}) => {
               <Text style={styles.Descripcion}>{item.description}
               </Text>
 
-                <TouchableOpacity onPress={() => navigation.navigate('Reserva',{precio:item.price, DiasEstancia:Dias})}
+                <TouchableOpacity onPress={() => navigation.navigate('Reserva',{PrecioInicial:item.price, DiasEstancia:Dias, FechaInicio:inicio, FechaSalida:final, idHabitacion:item._id, NumPerson:capacity})}
                 style={styles.colorBtn}>
                 <Text style={styles.colorTxtBtn}>Seleccionar</Text>
                 </TouchableOpacity> 
