@@ -45,7 +45,7 @@ const {isLoading, login, userInfo} = useContext(AuthContext);
         <Stack.Screen name="Menu" component={MenuScreen}  />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Reserva" component={ReservaScreen} />
-        <Stack.Screen name="Crearcuenta" component={CreateAccountScreen} />
+        <Stack.Screen name="Crear cuenta" component={CreateAccountScreen} />
         <Stack.Screen name="Generar Reserva" component={GenerateReservaScreen} />
         <Stack.Screen name="Habitaciones disponibles" component={RoomsAvailableScreen} />
         <Stack.Screen name="Cuenta creada" component={AccountCreateScreen} />

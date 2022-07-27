@@ -10,6 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 const LoginScreen= ()=>{
     const navigation = useNavigation();
     return(
+      
         <View style={styles.container}>
             
             <ImageBackground style={ styles.backgroundImage } 
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
       flex: 1,
       //backgroundColor: '#716967',
       alignItems: 'center',
-      justifyContent: 'center',
+
       position: 'relative'
     },
     backgroundImage: {
@@ -57,8 +58,8 @@ const styles = StyleSheet.create({
       titulo:{
           color:'#FF9116',
           fontSize: 45,
-          marginTop: 20
-        
+          marginTop: 300
+
       },
      
      

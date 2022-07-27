@@ -30,7 +30,7 @@ const MenuScreen= ()=>{
                     <Icons  name='arrow-forward-ios' style={styles.flechaIcon} />
                 </TouchableOpacity>  
                 
-                <TouchableOpacity onPress={() => navigation.navigate('Login')}
+                <TouchableOpacity 
                     style={styles.btnStar}>
                     <Icons  name='person' style={styles.circleIcon}/>
                     <Text style={styles.textBtn}>Mis Reservas</Text>

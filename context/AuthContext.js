@@ -62,8 +62,7 @@ export const AuthProvider = ({children}) => {
                 console.log(PrecioValor);
                 useCounter();
                 //navigation.navigate('Cuenta creada');Cuenta creada
-
-                RootNavigation.navigate('Crearcuenta',PrecioValor, Fechain,Fechafin,HabitacionId,Personas);
+                RootNavigation.navigate('Confirmar reserva',PrecioValor, Fechain,Fechafin,HabitacionId,Personas);
             }
             setIsLoading(false);
 
