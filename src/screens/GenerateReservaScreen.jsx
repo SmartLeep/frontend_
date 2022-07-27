@@ -35,8 +35,8 @@ const SeleccionFechas = () => {
       navigation.navigate('Habitaciones disponibles',
       {
         capacity:chooseData,
-        inicio:textFechaIn.toISOString(),
-        final:textFechaFin.toISOString(),
+        inicio:textFechaIn.toLocaleDateString(),
+        final:textFechaFin.toLocaleDateString(),
         Dias:calcular})
     }
   };
