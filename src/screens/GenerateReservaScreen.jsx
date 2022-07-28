@@ -35,8 +35,8 @@ const SeleccionFechas = () => {
       navigation.navigate('Habitaciones disponibles',
       {
         capacity:chooseData,
-        inicio:textFechaIn.toLocaleDateString(),
-        final:textFechaFin.toLocaleDateString(),
+        inicio:textFechaIn.toISOString(),
+        final:textFechaFin.toISOString(),
         Dias:calcular})
     }
   };
@@ -69,7 +69,12 @@ const SeleccionFechas = () => {
   const valor1 = textFechaIn.toLocaleDateString();
   const valor2 = textFechaFin.toLocaleDateString();
   var diff = textFechaFin - textFechaIn;
-  const calcular = diff/(1000*60*60*24)
+  var calcular = 1;
+  if (calcular > 0){
+     calcular = diff/(1000*60*60*24)
+  }else{
+     calcular = 1;
+  }
   //console.log(valor)
   return (
         <View style={styles.container}>

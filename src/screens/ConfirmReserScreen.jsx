@@ -1,9 +1,11 @@
-import react from "react";
+import react,{useContext,useState} from "react";
 import { Image } from 'react-native';
 
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, TextInput,  Button, TouchableOpacity} from 'react-native';
 import { Colors,} from 'react-native/Libraries/NewAppScreen';
 import { useNavigation } from "@react-navigation/native";
+import { AuthContext } from "../../context/AuthContext";
+
 
 const ConfirmReserScreen= ({route})=>{
   const {PrecioFin} = route.params;
@@ -11,8 +13,12 @@ const ConfirmReserScreen= ({route})=>{
   const {FechaFinal} = route.params;
   const {Id_Habitaciones} = route.params;
   const {NUMPerson} = route.params;
+  const {idCliente} = route.params;
+  
   const valor = ""; 
   const navigation = useNavigation();
+
+  const {isLoading, registerReserva} = useContext(AuthContext);
     return(
         <View style={styles.container}>
             
@@ -20,8 +26,8 @@ const ConfirmReserScreen= ({route})=>{
                 <Text style={styles.titulo} >Confirma la reserva para realizar el pago</Text>
                 
                 <Text style={styles.subtitulo}>Precio a pagar: </Text><Text style={styles.subtitulo2}>{PrecioFin}</Text>
-                <Text style={styles.subtitulo}>Su reserva inicia: </Text><Text style={styles.subtitulo2}>{FechaInicio}</Text>
-                <Text style={styles.subtitulo}>Su reserva finaliza: </Text><Text style={styles.subtitulo2}>{FechaFinal}</Text>
+                <Text style={styles.subtitulo}>Su reserva inicia: </Text><Text style={styles.subtitulo2}>{FechaInicio.substring(0, 10)}</Text>
+                <Text style={styles.subtitulo}>Su reserva finaliza: </Text><Text style={styles.subtitulo2}>{FechaFinal.substring(0, 10)}</Text>
                 <Text style={styles.subtitulo}>Total de personas a ingresar: </Text><Text style={styles.subtitulo2}>{NUMPerson}</Text>
 
 
@@ -32,7 +38,7 @@ const ConfirmReserScreen= ({route})=>{
                      
               </View>
               
-              <TouchableOpacity onPress={() => navigation.navigate('Realizar pago')}
+              <TouchableOpacity onPress={() => {registerReserva(idCliente,FechaInicio,FechaFinal,Id_Habitaciones,""+PrecioFin,parseInt(NUMPerson))}}
                   style={styles.colorBtn}>
                   <Text style={styles.colorTxtBtn}>Confirmar reserva</Text>
                 </TouchableOpacity> 

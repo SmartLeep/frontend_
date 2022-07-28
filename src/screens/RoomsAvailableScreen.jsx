@@ -50,8 +50,9 @@ const Habitaciones = ({route}) => {
               <Text style={styles.subtitulo}>Costo</Text>
               <Text style={styles.Descripcion}>{item.price}</Text>
               <Text style={styles.subtitulo}>Descripción </Text>
-              <Text style={styles.Descripcion}>{item.description}
-              </Text>
+              <Text style={styles.Descripcion}>{item.description}</Text>
+              <Text style={styles.subtitulo}>Capacidad </Text>
+              <Text style={styles.Descripcion}>{item.capacity}</Text>
 
                 <TouchableOpacity onPress={() => navigation.navigate('Reserva',{PrecioInicial:item.price, DiasEstancia:Dias, FechaInicio:inicio, FechaSalida:final, idHabitacion:item._id, NumPerson:capacity})}
                 style={styles.colorBtn}>

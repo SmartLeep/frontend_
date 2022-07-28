@@ -10,77 +10,86 @@ import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../../context/AuthContext";
 import Spinner from 'react-native-loading-spinner-overlay';
 
-const RegisScreen= ()=>{
-    const navigation = useNavigation();
+const RegisScreen= ({route})=>{
+  
+  const {Precio} = route.params;
+  const {FechaInRes} = route.params;
+  const {FechaFinRes} = route.params;
+  const {IdHabitaciones} = route.params;
+  const {NumPersonas} = route.params;
+  const {Cliente} = route.params;
 
-    const [Identificacion, setIdentificacion] = useState(null);
-    const [Nombres, setNombres] = useState(null);
-    const [Apellidos, setApellidos] = useState(null);
-    const [Direccion, setDireccion] = useState(null);
-    const [Email, setEmail] = useState(null);
-    const [username, setusername] = useState(null);
-    const [password, setpassword] = useState(null);
-    const {isLoading, register} = useContext(AuthContext);
 
-    return(
-    <View style={styles.container}>
-        <Spinner visible={isLoading} /> 
-        <ImageBackground style={ styles.backgroundImage } 
-                resizeMode='cover' 
-                source={require('../../image/fondo_smart.png')}></ImageBackground>
-        
-        <View style={styles.modalView}>
-        
-        <Image style={styles.image}
-                source={require('../../image/logo_smart.png')}></Image>
+  const navigation = useNavigation();
+
+  const [Identificacion, setIdentificacion] = useState(null);
+  const [Nombres, setNombres] = useState(null);
+  const [Apellidos, setApellidos] = useState(null);
+  const [Direccion, setDireccion] = useState(null);
+  const [Email, setEmail] = useState(null);
+  const [username, setusername] = useState(null);
+  const [password, setpassword] = useState(null);
+  const {isLoading, register} = useContext(AuthContext);
+
+  return(
+  <View style={styles.container}>
+      <Spinner visible={isLoading} /> 
+      <ImageBackground style={ styles.backgroundImage } 
+              resizeMode='cover' 
+              source={require('../../image/fondo_smart.png')}></ImageBackground>
+      
+      <View style={styles.modalView}>
+      
+      <Image style={styles.image}
+              source={require('../../image/logo_smart.png')}></Image>
+          
+          <TextInput style={styles.txtInput} 
+                    value={Nombres}
+                    placeholder="Nombres"
+                    onChangeText={text => setNombres(text)}
+                    />
+          <TextInput style={styles.txtInput} 
+                    value={Apellidos}
+                    placeholder="Apellidos"
+                    onChangeText={text => setApellidos(text)}
+                    /> 
+          <TextInput style={styles.txtInput} 
+                    value={Identificacion}
+                    placeholder="Identificacion"
+                    keyboardType='number-pad'
+                    onChangeText={text => setIdentificacion(text)}
+                    />
+          <TextInput style={styles.txtInput} 
+                    value={Direccion}
+                    placeholder="Direccion"
+                    onChangeText={text => setDireccion(text)}
+                    />
+          <TextInput style={styles.txtInput} 
+                    value={Email}
+                    placeholder="Email"
+                    onChangeText={text => setEmail(text)}
+                    />
+          <TextInput style={styles.txtInput} 
+                    value={username}
+                    placeholder="Usuario"
+                    onChangeText={text => setusername(text)}
+                    />
+          <TextInput secureTextEntry={true} style={styles.txtInput} 
+                    value={password}
+                    placeholder="Contraseña"
+                    onChangeText={text => setpassword(text)}
+                    />               
+          <TouchableOpacity onPress={() =>{register(Identificacion, Nombres, Apellidos, Direccion, Email, username, password, Precio, FechaInRes, FechaFinRes,IdHabitaciones, NumPersonas,Cliente)}}//navigation.navigate('Cuenta creada')}
+                style={styles.colorBtn}>
+          <Text style={styles.colorTxtBtn}>Registrar Cuenta</Text>
+          </TouchableOpacity>  
+
+          
+      </View>
             
-            <TextInput style={styles.txtInput} 
-                      value={Nombres}
-                      placeholder="Nombres"
-                      onChangeText={text => setNombres(text)}
-                      />
-            <TextInput style={styles.txtInput} 
-                      value={Apellidos}
-                      placeholder="Apellidos"
-                      onChangeText={text => setApellidos(text)}
-                      /> 
-            <TextInput style={styles.txtInput} 
-                      value={Identificacion}
-                      placeholder="Identificacion"
-                      keyboardType='number-pad'
-                      onChangeText={text => setIdentificacion(text)}
-                      />
-            <TextInput style={styles.txtInput} 
-                      value={Direccion}
-                      placeholder="Direccion"
-                      onChangeText={text => setDireccion(text)}
-                      />
-            <TextInput style={styles.txtInput} 
-                      value={Email}
-                      placeholder="Email"
-                      onChangeText={text => setEmail(text)}
-                      />
-            <TextInput style={styles.txtInput} 
-                      value={username}
-                      placeholder="Usuario"
-                      onChangeText={text => setusername(text)}
-                      />
-            <TextInput secureTextEntry={true} style={styles.txtInput} 
-                      value={password}
-                      placeholder="Contraseña"
-                      onChangeText={text => setpassword(text)}
-                      />               
-            <TouchableOpacity onPress={() =>{register(Identificacion, Nombres, Apellidos, Direccion, Email, username, password)}}//navigation.navigate('Cuenta creada')}
-                  style={styles.colorBtn}>
-            <Text style={styles.colorTxtBtn}>Registrar Cuenta</Text>
-            </TouchableOpacity>  
-
-            
-        </View>
-              
-    
-    </View>
-    )
+  
+  </View>
+  )
 }
 
 const styles = StyleSheet.create({

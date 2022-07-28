@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import React, {createContext, useEffect, useState} from 'react';
 import { BASE_URL } from '../src/config';
+import { RES_URL } from '../src/config';
 import { NavigationContainer, useNavigation } from "@react-navigation/native"; 
 
 import { Navigation } from "../Navigation";
@@ -24,7 +25,7 @@ export const AuthProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false);
     const navigation = props => (useNavigation());
     // Registro
-    const register = (Identificacion, Nombres, Apellidos, Direccion, Email, username, password) =>{
+    const register = (Identificacion, Nombres, Apellidos, Direccion, Email, username, password, Precio, FechaInRes, FechaFinRes, IdHabitaciones, NumPersonas, idCliente) =>{
         setIsLoading(true);
         axios.post(`${BASE_URL}/cliente`,{
             Identificacion, Nombres, Apellidos, Direccion, Email, username, password
@@ -38,7 +39,7 @@ export const AuthProvider = ({children}) => {
                 //useCounter();
                 //navigation.navigate('Cuenta creada');
                 //RootNavigation.navigate('Cuenta creada');
-                RootNavigation.navigate('Login');
+                RootNavigation.navigate('Login',Precio, FechaInRes, FechaFinRes, IdHabitaciones, NumPersonas,idCliente);
             }
         }).catch(e =>{
             console.log(`error en registro ${e}`);
@@ -46,15 +47,39 @@ export const AuthProvider = ({children}) => {
         })
     };
 
+    //Reserva
+    const registerReserva = (idCliente,fechaIngreso, fechaSalida, Habitacion, montoTotal, cantidadPersonas) =>{
+        setIsLoading(true);
+        console.log(typeof(idCliente)+"--"+typeof(fechaIngreso)+"--"+typeof(FechaSalida)+"--"+typeof(Habitacion)+"--"+typeof(montoTotal)+"--"+typeof(cantidadPersonas))
+        axios.post(`${RES_URL}/v1/reserva/habitacion/`+Habitacion,{
+            idCliente, fechaIngreso, fechaSalida, Habitacion, montoTotal, cantidadPersonas
+        }).then(res => {
+            let userInfo = res.data;
+            //console.log(idCliente+"--"+FechaIngreso+"--"+FechaSalida+"--"+Habitacion+"--"+montoTotal+"--"+cantidadPersonas)
+            setUserInfo(userInfo);
+            const usuario = AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
+            setIsLoading(false);
+            if (usuario!=null){
+                console.log("mi usuario", usuario);
+                //useCounter();
+                //navigation.navigate('Cuenta creada');
+                //RootNavigation.navigate('Cuenta creada');
+                RootNavigation.navigate2('Realizar pago');
+            }
+        }).catch(e =>{
+            console.log(`error en la reserva ${e}`);
+            setIsLoading(false);
+        })
+    };
     // Login
-    const login = (username, password,PrecioValor, Fechain,Fechafin,HabitacionId,Personas) =>{
+    const login = (username, password,PrecioValor, Fechain,Fechafin,HabitacionId,Personas,idCliente) =>{
         setIsLoading(true);
         axios.post(`${BASE_URL}/v1/auth/signin`,{
             username,
              password
         }).then(res => {
             let userInfo = res.data;
-            console.log(userInfo);
+            console.log(userInfo.user_id);
             setUserInfo(userInfo);
             const token = AsyncStorage.setItem('userInfo', JSON.stringify(userInfo))
             if (token!=null){
@@ -62,7 +87,7 @@ export const AuthProvider = ({children}) => {
                 console.log(PrecioValor);
                 useCounter();
                 //navigation.navigate('Cuenta creada');Cuenta creada
-                RootNavigation.navigate('Confirmar reserva',PrecioValor, Fechain,Fechafin,HabitacionId,Personas);
+                RootNavigation.navigate('Confirmar reserva',PrecioValor, Fechain,Fechafin,HabitacionId,Personas,userInfo.user_id);
             }
             setIsLoading(false);
 
@@ -80,7 +105,8 @@ export const AuthProvider = ({children}) => {
                 isLoading,
                 userInfo,
                 login,
-                register
+                register,
+                registerReserva
             }}>
             {children}
         </AuthContext.Provider>

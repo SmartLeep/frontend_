@@ -11,11 +11,11 @@ import { AuthContext } from "../../context/AuthContext";
 import Spinner from 'react-native-loading-spinner-overlay';
 
 const LoginScreen= ({route})=>{
-    const {PrecioValor} = route.params;
-    const {Fechain} = route.params;
-    const {Fechafin} = route.params;
-    const {HabitacionId} = route.params;
-    const {Personas} = route.params;
+    const {PrecioFin} = route.params;
+    const {FechaInicio} = route.params;
+    const {FechaFinal} = route.params;
+    const {Id_Habitaciones} = route.params;
+    const {NUMPerson} = route.params;
 
 
     const navigation = useNavigation();
@@ -46,11 +46,11 @@ const LoginScreen= ({route})=>{
                       placeholder="Contraseña"
                       onChangeText={text => setPassword(text)}
                       />               
-            <TouchableOpacity onPress={() =>{login(username, password, PrecioValor, Fechain,Fechafin,HabitacionId,Personas)}}//navigation.navigate('Cuenta creada')}
+            <TouchableOpacity onPress={() =>{login(username, password, PrecioFin, FechaInicio,FechaFinal,Id_Habitaciones,NUMPerson,"1")}}//navigation.navigate('Cuenta creada')}
                   style={styles.colorBtn}>
             <Text style={styles.colorTxtBtn}>Login</Text>
             </TouchableOpacity>  
-            <TouchableOpacity onPress={() => navigation.navigate('Registro')}
+            <TouchableOpacity onPress={() => navigation.navigate('Registro',{Precio:PrecioFin, FechaInRes:FechaInicio, FechaFinRes:FechaFinal,IdHabitaciones:Id_Habitaciones,NumPersonas:NUMPerson,Cliente:"1"})}
                   style={styles.colorBtnRegistros}>
                   <Text style={styles.colorTxtBtnRegistro}>Registrarse</Text>
             </TouchableOpacity>

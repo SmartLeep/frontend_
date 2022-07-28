@@ -25,7 +25,6 @@ const RegisterScreen= ({route})=>{
           <ImageBackground style={ styles.backgroundImage } 
                 resizeMode='cover' 
                 source={require('../../image/fondo_smart.png')}></ImageBackground>
-            <Text>hola:{valorFinal}</Text>
               <View style={styles.modalView}>
                 <Text style={styles.titulo} >Inicia sesión para continuar</Text>
                 
@@ -35,7 +34,7 @@ const RegisterScreen= ({route})=>{
                      
               </View>
               
-              <TouchableOpacity onPress={() => navigation.navigate('Login',{PrecioValor:valorFinal, Fechain:FechaInicio, Fechafin:FechaSalida, HabitacionId:idHabitacion, Personas:NumPerson})}
+              <TouchableOpacity onPress={() => navigation.navigate('Login',{PrecioFin:valorFinal, FechaInicio:FechaInicio, FechaFinal:FechaSalida, Id_Habitaciones:idHabitacion, NUMPerson:NumPerson})}
                   style={styles.colorBtn}>
                   <Text style={styles.colorTxtBtn}>Iniciar Sesión</Text>
                 </TouchableOpacity> 
