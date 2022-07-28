@@ -25,7 +25,8 @@ const PaymentScreen = () => {
             
             
             
-            <TouchableOpacity style={styles.btnStar}  >
+            <TouchableOpacity onPress={() => navigation.navigate('Confirmación de pago')}
+              style={styles.btnStar}  >
               <Icons  name='credit-card' style={styles.circleIcon2}/>
               <Text tyle={styles.textBtn}>TransferWise</Text>
             </TouchableOpacity> 

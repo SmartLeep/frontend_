@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import React, {createContext, useEffect, useState} from 'react';
+import { Alert} from 'react-native';
 import { BASE_URL } from '../src/config';
 import { RES_URL } from '../src/config';
 import { NavigationContainer, useNavigation } from "@react-navigation/native"; 
@@ -18,6 +19,31 @@ function useCounter() {
    //const [navigation] = useNavigation({});
    return console.log("mi token");
  }
+ function createTwoButtonAlert (){
+    Alert.alert(
+      "Campos Inválidos",
+      "Los credenciales están vacíos o son incorrectos",
+      [
+        { text: "OK", onPress: () => console.log("OK Pressed") }
+      ]
+  )};
+
+  function createTwoButtonAlertRegistro (){
+    Alert.alert(
+      "Campos Inválidos",
+      "Los credenciales están vacíos o son incorrectos",
+      [
+        { text: "OK", onPress: () => console.log("OK Pressed") }
+      ]
+  )};
+  function reservaGeneradaExito (){
+    Alert.alert(
+      "Aviso",
+      "Su reserva ha sido generada con éxito",
+      [
+        { text: "OK", onPress: () => console.log("OK Pressed") }
+      ]
+  )};
 
 export const AuthProvider = ({children}) => {
     
@@ -42,6 +68,7 @@ export const AuthProvider = ({children}) => {
                 RootNavigation.navigate('Login',Precio, FechaInRes, FechaFinRes, IdHabitaciones, NumPersonas,idCliente);
             }
         }).catch(e =>{
+            createTwoButtonAlertRegistro();
             console.log(`error en registro ${e}`);
             setIsLoading(false);
         })
@@ -61,12 +88,14 @@ export const AuthProvider = ({children}) => {
             setIsLoading(false);
             if (usuario!=null){
                 console.log("mi usuario", usuario);
+                reservaGeneradaExito();
                 //useCounter();
                 //navigation.navigate('Cuenta creada');
                 //RootNavigation.navigate('Cuenta creada');
                 RootNavigation.navigate2('Realizar pago');
             }
         }).catch(e =>{
+            
             console.log(`error en la reserva ${e}`);
             setIsLoading(false);
         })
@@ -92,6 +121,8 @@ export const AuthProvider = ({children}) => {
             setIsLoading(false);
 
         }).catch(e => {
+            
+            createTwoButtonAlert();
             console.log(`login error ${e}`);
             setIsLoading(false);
         });

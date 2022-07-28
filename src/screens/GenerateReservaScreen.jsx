@@ -1,5 +1,5 @@
-import React, { useState,Component } from 'react';
-import { View, ImageBackground, StyleSheet, Text, Button,  Modal, TouchableOpacity, SafeAreaView} from 'react-native';
+import React, { useState, Component } from 'react';
+import { View, Alert, ImageBackground, StyleSheet, Text, Button,  Modal, TouchableOpacity, SafeAreaView} from 'react-native';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import {ModalPicker} from "../../Components/ModelPicker"
 import Icons from 'react-native-vector-icons/MaterialIcons';
@@ -30,6 +30,15 @@ const SeleccionFechas = () => {
     setDatePickerVisibility(true);
   };
 
+  function createTwoButtonAlert (){
+    Alert.alert(
+      "Campo vacío",
+      "Seleccione un número de personas",
+      [
+        { text: "OK", onPress: () => console.log("OK Pressed") }
+      ]
+  )};
+
   function validarCampo() {
     if (chooseData!="Seleccione item...."){
       navigation.navigate('Habitaciones disponibles',
@@ -38,6 +47,9 @@ const SeleccionFechas = () => {
         inicio:textFechaIn.toISOString(),
         final:textFechaFin.toISOString(),
         Dias:calcular})
+    }
+    else{
+       createTwoButtonAlert();
     }
   };
 

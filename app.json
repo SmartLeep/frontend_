@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "smartleep",
-    "slug": "fronted_smartleep",
+    "slug": "smartleep",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icono.png",

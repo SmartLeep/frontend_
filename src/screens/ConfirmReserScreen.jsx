@@ -15,6 +15,14 @@ const ConfirmReserScreen= ({route})=>{
   const {NUMPerson} = route.params;
   const {idCliente} = route.params;
   
+  function createTwoButtonAlert (){
+    Alert.alert(
+      "Campo vacío",
+      "Seleccione un número de personas",
+      [
+        { text: "OK", onPress: () => console.log("OK Pressed") }
+      ]
+  )};
   const valor = ""; 
   const navigation = useNavigation();
 
