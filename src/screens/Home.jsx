@@ -17,7 +17,7 @@ const LoginScreen= ()=>{
                 resizeMode='cover' 
                 source={require('../../image/home.jpg')}></ImageBackground>
             <Text style={ styles.titulo }> BIENVENIDO</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Menu')}
+            <TouchableOpacity onPress={() => navigation.navigate('Generar Reserva')}
                   style={styles.colorBtn}>
             <Text style={styles.colorTxtBtn}>Iniciar Reservación</Text>
             
